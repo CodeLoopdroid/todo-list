@@ -1,61 +1,67 @@
 body {
     padding: 50px;
-    color: #000;
-    font-family: sans-serif;
-    background-color: #473C2E;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    margin: 0;
 }
 
 .content {
     max-width: 1000px;
     margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 h1 {
     text-align: center;
-    color: #000;
+    color: #444;
     margin-bottom: 30px;
-    font-weight: bold;
+    font-weight: 700;
+    letter-spacing: 1.2px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
-    border: 2px solid black;
-    color: #000;
-    margin: 0 auto 30px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
-    border: 2px solid #000;
-    padding: 20px;
-    word-wrap: break-word;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 20px;
     text-align: center;
+    word-wrap: break-word;
 }
 
 th {
-    background-color: #6E6E33;
+    background-color: #5a4e9c;
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
 }
 
 a {
-    color: #6E6E33;
-    font-size: 18px;
+    color: #5a4e9c;
+    font-size: 16px;
     text-decoration: none;
-    transition: color 0.3s ease;
-    cursor: pointer;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: grey;
+    color: #3f366b;
     text-decoration: underline;
 }
 
@@ -66,39 +72,46 @@ a:hover {
 
 form {
     text-align: center;
+    margin-top: 30px;
 }
 
 input[type="text"] {
     width: 60%;
     padding: 15px;
     font-size: 16px;
-    border: 2px solid #6E6E33;
-    border-radius: 5px;
+    border: 2px solid #5a4e9c;
+    border-radius: 25px;
     margin-top: 20px;
     box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #3f366b;
+    outline: none;
 }
 
 input[type="submit"] {
-    padding: 15px 30px;
+    padding: 15px 40px;
     margin-left: 15px;
     font-size: 16px;
-    background-color: #6E6E33;
+    background-color: #5a4e9c;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     color: #fff;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 700;
     transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #57572a;
+    background-color: #3f366b;
 }
 
 .empty-message {
     text-align: center;
     font-size: 1.3em;
-    color: #6E6E33;
+    color: #5a4e9c;
     margin-top: 40px;
-    font-weight: bold;
+    font-weight: 700;
 }
