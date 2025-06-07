@@ -1,24 +1,22 @@
-from flask import Flask, render_template, request , redirect
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
-# '////' --> This is a Absolute path, /// relative path.
 db = SQLAlchemy(app)
 
 class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    content = db.Column(db.String(200), nullable = False)
-    completed = db.Column(db.Integer, default = 0)
-    date_created = db.Column(db.DateTime, default = datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(200), nullable=False)
+    completed = db.Column(db.Integer, default=0)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-
-@app.route("/", methods = ['POST', 'GET']) #GET BY DEFAULT
+@app.route("/", methods=['POST', 'GET'])
 def this():
     if request.method == "POST":
         task_content = request.form["content"]
-        new_task = Todo(content = task_content)
+        new_task = Todo(content=task_content)
 
         try:
             db.session.add(new_task)
@@ -28,7 +26,7 @@ def this():
             return '404 Error'
     else:
         tasks = Todo.query.order_by(Todo.date_created).all()
-        return render_template("index.html" , tasks = tasks) 
+        return render_template("index.html", tasks=tasks)
 
 @app.route("/delete/<int:id>")
 def delete(id):
@@ -40,7 +38,7 @@ def delete(id):
     except:
         return "404 DataBase Error "
 
-@app.route("/update/<int:id>", methods = ["POST", "GET"])
+@app.route("/update/<int:id>", methods=["POST", "GET"])
 def update(id):
     task_to_update = Todo.query.get_or_404(id)
     if request.method == "POST":
@@ -49,11 +47,9 @@ def update(id):
             db.session.commit()
             return redirect("/")
         except:
-            "404 DataBase Error "
+            return "404 DataBase Error "
     else:
-        return render_template("update.html", task = task_to_update)
-
-
+        return render_template("update.html", task=task_to_update)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th>Task</th>
-                <th>Added On</th>
+                <th>Added On (Local Time)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,7 +23,7 @@
             {% for task in tasks %}
             <tr>
                 <td>{{ task.content }}</td>
-                <td>{{ task.date_created.strftime('%d-%b-%Y %I:%M:%S %p') }}</td>
+                <td class="task-time" data-utc="{{ task.date_created.strftime('%Y-%m-%dT%H:%M:%S') }}"></td>
                 <td class="actions">
                     <a href="/update/{{ task.id }}">Update</a>
                     <a href="/delete/{{ task.id }}" onclick="return confirm('Are you sure you want to delete this task?');">Delete</a>
@@ -38,4 +38,6 @@
         <input type="submit" value="Add Task">
     </form>
 </div>
+
+<script src="{{ url_for('static', filename='js/localtime.js') }}"></script>
 {% endblock %}
